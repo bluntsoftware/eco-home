@@ -1,0 +1,8 @@
+{
+  "name": "eco-home",
+  "app_id": "9bb0ebb1",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
