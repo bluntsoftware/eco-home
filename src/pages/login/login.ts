@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
+import {Auth} from "@bluntsoftware/iglue";
 
 @IonicPage()
 @Component({
@@ -15,14 +16,15 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
+    email: 'admin',
+    password: 'admin'
   };
 
   // Our translated text strings
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
+    public auth:Auth,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
@@ -34,17 +36,19 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
+    const that = this;
+    this.auth.login(this.account.email,this.account.password).then(
+      (account) => {
+        that.navCtrl.push(MainPage);
+      },
+      (err) => {
+        // Unable to log in
+        let toast = this.toastCtrl.create({
+          message:  err.statusText,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
       });
-      toast.present();
-    });
   }
 }

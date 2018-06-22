@@ -34,17 +34,17 @@ export class TutorialPage {
           {
             title: values.TUTORIAL_SLIDE1_TITLE,
             description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-1.png',
+            image: 'https://pbs.twimg.com/profile_images/505431415643992064/AeRJ5l0e_400x400.jpeg',
           },
           {
             title: values.TUTORIAL_SLIDE2_TITLE,
             description: values.TUTORIAL_SLIDE2_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-2.png',
+            image: 'http://images.all-free-download.com/images/graphiclarge/set_of_green_eco_house_vector_522540.jpg',
           },
           {
             title: values.TUTORIAL_SLIDE3_TITLE,
             description: values.TUTORIAL_SLIDE3_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-3.png',
+            image: 'https://organic4greenlivings.com/wp-content/uploads/2015/10/eco-friendly-and-green-home.jpg',
           }
         ];
       });

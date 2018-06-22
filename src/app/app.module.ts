@@ -13,6 +13,10 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 
+import {IGlueClientModule,IGlueConfig} from "@bluntsoftware/iglue";
+
+
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -41,6 +45,7 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    IGlueClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -56,6 +61,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
+    {provide: IGlueConfig,  useValue: new IGlueConfig('http://localhost:8080/GreenRoof')},
     Api,
     Items,
     User,
