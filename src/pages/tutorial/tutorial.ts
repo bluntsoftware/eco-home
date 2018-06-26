@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
+import {IGlueConfig} from "@bluntsoftware/iglue";
 
 export interface Slide {
   title: string;
@@ -19,7 +20,7 @@ export class TutorialPage {
   showSkip = true;
   dir: string = 'ltr';
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
+  constructor(public config:IGlueConfig,public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
     this.dir = platform.dir();
     translate.get(["TUTORIAL_SLIDE1_TITLE",
       "TUTORIAL_SLIDE1_DESCRIPTION",
@@ -34,12 +35,12 @@ export class TutorialPage {
           {
             title: values.TUTORIAL_SLIDE1_TITLE,
             description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'https://pbs.twimg.com/profile_images/505431415643992064/AeRJ5l0e_400x400.jpeg',
+            image: '../assets/imgs/logo.png',
           },
           {
             title: values.TUTORIAL_SLIDE2_TITLE,
             description: values.TUTORIAL_SLIDE2_DESCRIPTION,
-            image: 'http://images.all-free-download.com/images/graphiclarge/set_of_green_eco_house_vector_522540.jpg',
+            image: 'https://pbs.twimg.com/profile_images/505431415643992064/AeRJ5l0e_400x400.jpeg',
           },
           {
             title: values.TUTORIAL_SLIDE3_TITLE,
