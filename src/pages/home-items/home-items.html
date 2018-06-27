@@ -1,0 +1,49 @@
+<!--
+  Generated template for the HomeItemsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>home-items</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="accordion-list" no-lines  >
+    <!-- First Level -->
+    <ion-item *ngFor="let item of items; let i = index" no-padding>
+      <!-- Toggle Button -->
+      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+
+        <ion-badge color="light" item-end>{{item.count}}</ion-badge>
+      <!--  <ion-icon item-start name="arrow-forward" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-start name="arrow-down" *ngIf="item.open"></ion-icon> -->
+        {{ item.name }}
+        <button  ion-button name="rose" icon-only item-start (click)="addItem(item,$event)">
+          <ion-icon name='add-circle'></ion-icon>
+        </button>
+      </button>
+
+      <ion-list *ngIf="item.open"  >
+        <!-- Second Level -->
+        <ion-item *ngFor="let child of children(item._id); let j = index" (click)="editItem(child.idx)" >
+          <ion-icon item-start name="checkmark-circle-outline" *ngIf="child.questions"></ion-icon>
+          <ion-icon item-start name="help-circle-outline" *ngIf="!child.questions"></ion-icon>
+
+          <h2>{{ child.item.category }} - {{child.item.name}}</h2>
+          <!-- Direct Add Button -->
+          <button ion-button color="danger" icon-only item-end (click)="removeItem(child.idx,$event)">
+            <ion-icon name='remove-circle'></ion-icon>
+          </button>
+        </ion-item>
+      </ion-list>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,54 @@
+<!--
+  Generated template for the HomeItemDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="save()">
+         Save
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form>
+    <ion-list>
+      <ion-list-header *ngIf="indexes.length > 1">
+        <ion-navbar>
+          <ion-title>{{idxIndex+1}} of {{indexes.length}}  </ion-title>
+          <ion-buttons end>
+            <button ion-button color="primary" (click)="next()">
+              <ion-icon name="save">Next</ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+
+      </ion-list-header>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="home.items[itemIndex].name" name="name" [readonly]></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Location</ion-label>
+        <ion-input type="text" [(ngModel)]="home.items[itemIndex].category" name="category"></ion-input>
+      </ion-item>
+      <ion-list *ngFor="let question of home.items[itemIndex].questions;index as i" [attr.data-index]="i">
+        <ion-list-header text-wrap>
+          {{home.items[itemIndex].questions[i].question}}?
+        </ion-list-header>
+        <ion-list radio-group [(ngModel)]="home.items[itemIndex].questions[i]['answer']" name="answer{{itemIndex}}{{i}}" >
+          <ion-item *ngFor="let answer of question.answers" >
+            <ion-label>{{answer.answer}}</ion-label>
+            <ion-radio [value]="answer.answer"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </ion-list>
+    </ion-list>
+  </form>
+</ion-content>

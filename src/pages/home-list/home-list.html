@@ -1,0 +1,56 @@
+<!--
+  Generated template for the HomeListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Homes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="create()">
+        <ion-icon color="dark" name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-grid >
+    <ion-row >
+      <ion-col *ngFor="let home of homes" col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+        <ion-card  no-padding (click)="edit(home)">
+          <ion-list>
+            <button ion-item >
+              <ion-icon color="primary" icon-only item-start name="home"></ion-icon>
+              {{home.name}}, {{home.zip}}
+            </button>
+          </ion-list>
+          <ion-card-content>
+            <blunt-gauge [rating]="rate(home)"></blunt-gauge>
+            <h1 style="text-align: center">Eco-Rate</h1>
+          </ion-card-content>
+          <ion-list>
+            <button ion-item (click)="answerQuestions(home,$event)">
+              <ion-icon color="gray" icon-only icon-left name="help-circle"></ion-icon>
+              <ion-badge color="light" item-end>{{getUnAnsweredItems(home).length}}</ion-badge>
+              New Questions
+            </button>
+            <button  ion-item (click)="showRecommendations(home,$event)">
+              <ion-icon color="gray" icon-only icon-left name="bulb"></ion-icon>
+              <ion-badge color="light" item-end>{{getRecommendations(home).length}}</ion-badge>
+              Recommendations
+            </button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

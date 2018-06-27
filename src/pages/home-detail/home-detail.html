@@ -1,0 +1,57 @@
+<!--
+  Generated template for the HomeDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton >
+    <ion-title>
+      <img  src="../assets/imgs/logo.png"   height="25px"/>
+      Home Details
+    </ion-title>
+
+    <ion-buttons end>
+      <button round small ion-button color="primary" (click)="save()">Done</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="home.name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Zip</ion-label>
+        <ion-input type="text" [(ngModel)]="home.zip" name="email"></ion-input>
+      </ion-item>
+      <button ion-item (click)="editItems()">
+        <ion-icon color="gray" icon-only icon-left name="home"></ion-icon>
+        <ion-badge color="light" item-end>{{itemLength()}}</ion-badge>
+         Home Items
+      </button>
+      <!--
+      <button ion-item (click)="answerQuestions()">
+        <ion-icon color="gray" icon-only icon-left name="help-circle"></ion-icon>
+        <ion-badge color="light" item-end>{{getUnAnsweredItems().length}}</ion-badge>
+        New Questions
+      </button>
+      <button  ion-item (click)="showRecommendations()">
+        <ion-icon color="gray" icon-only icon-left name="bulb"></ion-icon>
+        <ion-badge color="light" item-end>{{getRecommendations().length}}</ion-badge>
+        Recommendations
+      </button> -->
+      <ion-buttons end>
+        <button *ngIf="home._id" small button-right ion-button color="danger" (click)="removeHome($event)" round>Remove</button>
+      </ion-buttons>
+
+    </ion-list>
+
+  </form>
+  <ion-list >
+
+  </ion-list>
+</ion-content>

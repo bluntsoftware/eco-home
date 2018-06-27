@@ -61,7 +61,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
-    {provide: IGlueConfig,  useValue: new IGlueConfig('http://localhost:8080/GreenRoof')},
+    {provide: IGlueConfig,  useValue: new IGlueConfig('http://jerb.bluntsoftware.com/Eco-Home')},
     Api,
     Items,
     User,
